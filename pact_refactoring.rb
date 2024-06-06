@@ -37,13 +37,13 @@ end
 
 # lalala
 class Interest < ApplicationRecord
-  has_many :interest_users, class_name: 'UserInterest'
+  has_many :interest_users, class_name: 'UserInterest', dependent: :destroy
   has_many :users, through: :interest_users
 end
 
 # lalala
 class Skil < ApplicationRecord
-  has_many :skill_users, class_name: 'UserSkill', foreign_key: :skill_id
+  has_many :skill_users, class_name: 'UserSkill', foreign_key: :skill_id, dependent: :destroy
   has_many :users, through: :skill_users
 end
 
