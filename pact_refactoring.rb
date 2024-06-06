@@ -70,8 +70,6 @@ module Users
       required_fields = %w[name surname patronymic email age nationality country gender]
       return if params.blank?
       return unless required_fields.all? { |field| params[field].present? }
-
-      ##########
       return if User.exists?(email: params['email'])
       return if params['age'].to_i <= 0 || params['age'].to_i > 90
       return if params['gender'] != 'male' && params['gender'] != 'female'
